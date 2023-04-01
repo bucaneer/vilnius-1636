@@ -1,0 +1,354 @@
+:root {
+    --c-light: #fefefc;
+    --c-dark: #100604;
+    --c-lighter-text: #302624;
+    --c-primary: #9B1D20;
+    --c-secondary: #180B5B;
+    --c-link: #009FB7;
+    --c-visited: #0d0630;
+    --c-highlight: #e9eced;
+    --c-aside: #E6CB9A;
+
+    --c-grey: #A7A8A9;
+    --c-white: #FFFFFF;
+    --c-yellow: #DACA90;
+    --c-material_brick: #BA2A0D;
+    --c-material_wood: #311C0E;
+    --c-theme_rooms: #2007C5;
+    --c-theme_storage: #084887;
+    --c-theme_food: #09814A;
+    --c-theme_commerce: #CD7F32;
+    --c-theme_stables: #305252;
+    --c-theme_confidence: #0050AA;
+    --c-theme_profession: var(--c-profession_carpenter);
+    --c-theme_title: var(--c-title_palatinate);
+    --c-theme_guest: var(--c-title_tribunal);
+    --c-jurisdiction_city: #759263;
+    --c-jurisdiction_catholic: #ffdc06;
+    --c-jurisdiction_castle: #CF3418;
+    --c-jurisdiction_bishop: #2c6795;
+    --c-profession_goldsmith: #FFDF00;
+    --c-profession_smith: #444543;
+    --c-profession_doctor: #1f9d5e;
+    --c-profession_tailor: #9f9a54;
+    --c-profession_leather: #624A2E;
+    --c-profession_artist: #091f92;
+    --c-profession_carpenter: #c6a27e;
+    --c-profession_mason: var(--c-material_brick);
+    --c-profession_butcher: #a16868;
+    --c-profession_merchant: #d4af37;
+    --c-profession_artisan: #558e47;
+    --c-profession_clergy: #fff4b0;
+    --c-profession_gentry: #B9202A;
+    --c-title_catholic: var(--c-jurisdiction_catholic);
+    --c-title_lutheran: #E5BB74;
+    --c-title_minister: var(--c-profession_gentry);
+    --c-title_reformed: #2FA2A1;
+    --c-title_senate: #870000;
+    --c-title_orthodox: #2D6E0B;
+    --c-title_townhall: var(--c-jurisdiction_city);
+    --c-title_tribunal: #E16F1B;
+    --c-title_uniate: #00BA35;
+    --c-title_court: #6495ED;
+    --c-title_palatinate: #8A4F7D;
+    --c-title_jewish: #005EB8;
+    --c-guest_minister: var(--c-title_minister);
+    --c-guest_senate: var(--c-title_senate);
+    --c-guest_court: var(--c-title_court);
+    --c-guest_family: #C0DC2B;
+    --c-guest_artist: var(--c-profession_artist);
+    --c-guest_palace: var(--c-jurisdiction_castle);
+    --c-guest_tribunal: var(--c-title_tribunal);
+    --c-guest_palatinate: var(--c-title_palatinate);
+
+    --f-serif: 'Libre Baskerville', Baskerville, Cambria, Georgia, serif;
+    --f-sans: 'Source Sans Pro', sans-serif;
+    --f-title: 'IM Fell English', var(--f-serif);
+
+    --shadow: 1px 1px 3px rgba(0, 0, 0, .5);
+
+    font-size: 14px;
+}
+
+[data-theme="theme_material"] {
+    --theme-color: var(--c-material_brick);
+}
+
+[data-theme="theme_jurisdiction"] {
+    --theme-color: var(--c-jurisdiction_city);
+}
+
+[data-theme="theme_rooms"] {
+    --theme-color: var(--c-theme_rooms);
+}
+
+[data-theme="theme_storage"] {
+    --theme-color: var(--c-theme_storage);
+}
+
+[data-theme="theme_food"] {
+    --theme-color: var(--c-theme_food);
+}
+
+[data-theme="theme_commerce"] {
+    --theme-color: var(--c-theme_commerce);
+}
+
+[data-theme="theme_stables"] {
+    --theme-color: var(--c-theme_stables);
+}
+
+[data-theme="theme_confidence"] {
+    --theme-color: var(--c-theme_confidence);
+}
+
+[data-theme="theme_profession"] {
+    --theme-color: var(--c-theme_profession);
+}
+
+[data-theme="theme_title"] {
+    --theme-color: var(--c-theme_title);
+}
+
+[data-theme="theme_guest"] {
+    --theme-color: var(--c-theme_guest);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: var(--c-light);
+    font-family: var(--f-serif);
+    color: var(--c-dark);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100vh;
+}
+
+sup, sub {
+    line-height: 0.5em;
+}
+
+.page-title {
+    font-family: var(--f-title);
+    color: var(--c-light);
+    background: var(--c-primary);
+    font-size: 3rem;
+    margin: 0 0 .5rem 0;
+    font-weight: 400;
+    text-align: center;
+    margin-left: -0.5rem;
+    margin-right: -1rem;
+    box-shadow: var(--shadow);
+    line-height: 1.25;
+}
+
+[data-display-template] {
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 18px;
+    color: var(--c-primary);
+}
+
+a {
+    color: var(--c-link);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    outline: none;
+}
+a:visited {
+    color: var(--c-visited);
+}
+a:focus {
+    background-color: var(--c-link);
+    color: var(--c-light);
+    border-color: var(--c-link);
+}
+a:hover {
+    border-bottom-width: 2px;
+}
+a:active {
+    background-color: var(--c-visited);
+    color: var(--c-light);
+    border-color: var(--c-visited);
+}
+a.plain {
+    background-color: inherit;
+    border: none !important;
+}
+
+.section-title {
+    line-height: 1.2em;
+    min-height: 2.5em;
+    margin: 0 -.5rem .5rem -1rem;
+    display: inline-flex;
+    align-items: center;
+    padding: .25rem .5rem;
+    background: var(--c-light);
+    box-shadow: var(--shadow);
+    height: 3.75rem;
+    box-sizing: border-box;
+}
+
+.text-bar {
+    background-color: var(--c-light);
+    z-index: 1;
+    box-shadow: var(--shadow);
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-bar > .page-title,
+.text-bar > .section-title {
+    flex-shrink: 0;
+}
+
+.text-bar > .main-content {
+    flex-grow: 1;
+    overflow: auto;
+    margin-top: 2px;
+}
+
+#menu-bar {
+    width: 250px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#map {
+    flex-grow: 1;
+    z-index: 0;
+    font-family: var(--f-sans);
+    font-size: 1rem;
+}
+
+#map strong {
+    font-weight: 600;
+}
+
+#content-bar {
+    width: 400px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    white-space: pre-wrap;
+}
+
+h5 {
+    font-family: var(--f-sans);
+    font-size: 1rem;
+    margin: 1rem 0 .5rem 0;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.75em;
+}
+
+hr {
+    border: 1px solid var(--c-grey);
+    margin: .5rem 0;
+}
+
+a.nostyle {
+    text-decoration: none;
+    color: inherit;
+}
+
+.leaflet-pane > svg path.leaflet-interactive:focus {
+    outline: none;
+}
+
+.leaflet-pane .leaflet-tile-container {
+    filter: grayscale(100%);
+}
+
+ul.theme-list {
+    list-style: none;
+    padding-left: 0;
+    font-family: var(--f-sans);
+    font-size: 1.2rem;
+}
+
+ul.theme-list > li {
+    margin-bottom: .5rem;
+}
+
+ul.theme-list input[name="theme"] {
+    display: none;
+}
+
+ul.theme-list input[name="theme"] + label {
+    border-right: 1rem solid var(--theme-color, var(--c-grey));
+    padding: 0 .5rem;
+    line-height: 2rem;
+    display: block;
+    cursor: pointer;
+}
+
+ul.theme-list input[name="theme"]:checked + label {
+    margin-left: -.5rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    box-shadow: var(--shadow);
+    border-right-width: 2rem;
+}
+
+ul.content-table {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.content-table > li {
+    display: flex;
+    border-left: 1rem solid var(--theme-color, var(--c-grey));
+    padding-left: .5rem;
+    margin-bottom: .5rem;
+    min-height: 2rem;
+}
+
+ul.content-items {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    flex-grow: 1;
+}
+
+ul.content-items > li:not(:last-child)::after {
+    content: '';
+    border-left: 1px solid var(--c-grey);
+    margin: 0 .5rem;
+}
+
+ul.content-items > li .label {
+    color: var(--c-grey);
+    margin-right: .5rem;
+    font-family: var(--f-sans);
+}
+
+ul.content-items > li span[data-field],
+ul.content-items > li span[data-mod-field] {
+    font-size: 1.25rem;
+    color: var(--theme-color, var(--c-dark));
+}
+
+ol.citations {
+    padding-left: 1.25rem;
+}
+
+ol.citations > li {
+    line-height: 1.5;
+    margin-bottom: .5rem;
+}

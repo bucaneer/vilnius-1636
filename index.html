@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="lt">
+    <head>    
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>Vilnius 1636</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swa&text=Vilnius%201636" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="includes/style.css">
+        <link rel="stylesheet" href="includes/leaflet.css">
+        <script src="includes/leaflet.js"></script>
+        <script src="includes/csvToArray.v2.1.min.js"></script>
+    </head>
+    <body>
+        <main>
+            <section id="menu-bar" class="text-bar">
+                <a class="plain" href="#" class="nostyle"><h1 class="page-title" data-display-template="welcome-template">Vilnius 1636</h1></a>
+                <ul class="theme-list">
+                    <li data-theme="theme_material">
+                        <input id="theme_material" type="radio" name="theme" value="theme_material" checked>
+                        <label for="theme_material">Pastatai</label>
+                    </li>
+                    <li data-theme="theme_jurisdiction">
+                        <input id="theme_jurisdiction" type="radio" name="theme" value="theme_jurisdiction">
+                        <label for="theme_jurisdiction">Jurisdika</label>
+                    </li>
+                    <li data-theme="theme_rooms">
+                        <input id="theme_rooms" type="radio" name="theme" value="theme_rooms">
+                        <label for="theme_rooms">Gyvenamosios patalpos</label>
+                    </li>
+                    <li data-theme="theme_storage">
+                        <input id="theme_storage" type="radio" name="theme" value="theme_storage">
+                        <label for="theme_storage">Sandėliavimo patalpos</label>
+                    </li>
+                    <li data-theme="theme_food">
+                        <input id="theme_food" type="radio" name="theme" value="theme_food">
+                        <label for="theme_food">Maisto gaminimo patalpos</label>
+                    </li>
+                    <li data-theme="theme_commerce">
+                        <input id="theme_commerce" type="radio" name="theme" value="theme_commerce">
+                        <label for="theme_commerce">Prekybinės patalpos</label>
+                    </li>
+                    <li data-theme="theme_stables">
+                        <input id="theme_stables" type="radio" name="theme" value="theme_stables">
+                        <label for="theme_stables">Vietos arklidėse</label>
+                    </li>
+                    <hr>
+                    <li data-theme="theme_profession">
+                        <input id="theme_profession" type="radio" name="theme" value="theme_profession">
+                        <label for="theme_profession">Profesija / Luomas</label>
+                    </li>
+                    <li data-theme="theme_title">
+                        <input id="theme_title" type="radio" name="theme" value="theme_title">
+                        <label for="theme_title">Pareigybė</label>
+                    </li>
+                    <li data-theme="theme_guest">
+                        <input id="theme_guest" type="radio" name="theme" value="theme_guest">
+                        <label for="theme_guest">Svečias</label>
+                    </li>
+                    <hr>
+                    <li data-theme="theme_confidence">
+                        <input id="theme_confidence" type="radio" name="theme" value="theme_confidence">
+                        <label for="theme_confidence">Tikslumas</label>
+                    </li>
+                </ul>
+            </section>
+            <section id="map"></section>
+            <section id="content-bar" class="text-bar"></section>
+        </main>
+        <script src="includes/script.js"></script>
+        <section id="welcome-template" hidden style="display:none">
+            <h2 class="section-title"><span>Sveiki!</span></h2>
+            <div class="main-content">
+                <p>Šiame puslapyje pateikiamas Vilniaus miesto namų ir gyventojų planas, parengtas pagal 1636 m. surašymą.<sup><a href="#cit_1">[1]</a></sup> Miestiečių namai surašyti prieš atvykstant valdovui Vladislovui Vazai, nes to meto miestiečiai turėjo prievolę savo namuose apgyvendinti į sostinę atvykstančius svečius. Pagal surašymą sužinome apie namų dydį, patalpų skaičių, savininkų ir gyventojų profesijas bei socialinį statusą, taip pat apie juose apgyvendintus svečius.</p>
+                <p>Atvaizduojant aprašytų pastatų vietas žemėlapyje, kiek įmanoma remtasi Lietuvos istorijos intstituto mokslininkų darbu.<sup><a href="#cit_2">[2]</a></sup> Visgi daug namų, ypač miesto pakraščiuose arčiau gynybinės sienos, teko pažymėti spėjimo būdu remiantis tik nevisai aiškiomis užuominomis surašymo tekste, nes tikslių kartografinių duomenų apie Vilniaus miesto užstatymą XVII amžiuje nėra, o vėliau sudaryti žemėlapiai<sup><a href="#cit_4">[4]</a><a href="#cit_5">[5]</a></sup> rodo miesto vaizdą smarkiai pasikeitusį po keleto karų ir gaisrų.</p>
+                <p><a href="https://github.com/bucaneer/vilnius-1636" target="_blank">Atviri duomenys</a> – šio puslapio programinis kodas.</p>
+                <h2 ><span>Pagrindiniai šaltiniai</span></h2>
+                <ol class="citations">
+                    <li id="cit_1">Paknys, M. (2006). <a href="https://www.lituanistika.lt/content/5128" target="_blank"><em>Vilniaus miestas ir miestiečiai 1636 m: namai, gyventojai, svečiai</em></a>. Vilnius: Vilniaus dailės akademijos leidykla.</li>
+                    <li id="cit_2">Klovas, M., Meilus, E., Valionienė, O. (2015). <a href="https://www.istorija.lt/data/public/uploads/2020/06/vilniaus-senamiescio-posesiju-raidos-xvi-xviii-a-apzvalga.pdf" target="_blank"><em>Vilniaus senamiesčio posesijų raidos XVI-XVIII a. apžvalga</em></a>. Vilnius. (<a href="https://www.istorija.lt/data/public/uploads/2020/06/vilniaus-senamiesc48dio-posesijc5b3-raida-xvi-xviii-a.-duomenc5b3-bazc497.zip" target="_blank">Duomenų bazė</a>)</li>
+                    <li id="cit_3">Frick, D. (2013). <em>Kith, kin, and neighbors: Communities and confessions in seventeenth-century Wilno</em>. Ithaca, NY: Cornell University Press.</li>
+                    <li id="cit_4">Fürstenhoff, J. (c. 1737). <em>Plan von der Stadt Wilda oder Willna in Littauen</em>. Staatsbibliothek zu Berlin, Kart. X 50203.</li>
+                    <li id="cit_5">Grunert, K., Doboszyński, J., Kreszkiewicz, S. (1808). <em>Plan Miasta Wilna</em>. // Kopija: Drėma, Ž. (1991). <em>Vilniaus senamiesčio planas: Pagal K. Grunertą</em>.</li>
+                </ol>
+            </div>
+        </section>
+        <section id="content-template" hidden style="display:none">
+            <h2 class="section-title"><span><span data-field="title_lt"></span> <small><span data-mod-field="id_1636"></span></small></span></h2>
+            <div class="main-content">
+                <ul class="content-table">
+                    <li data-theme="theme_material">
+                        <ul class="content-items">
+                            <li><span class="label">pastatas:</span> <span data-mod-field="material"></span></li>
+                            <li><span class="label">aukštų:</span> <span data-field="floors"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_jurisdiction">
+                        <ul class="content-items">
+                            <li><span class="label">jurisdika:</span> <span data-mod-field="jurisdiction"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_rooms">
+                        <ul class="content-items">
+                            <li><span class="label">kambarių:</span> <span data-field="rooms"></span></li>
+                            <li><span class="label">šild. kambarių:</span> <span data-field="heated_rooms"></span></li>
+                            <li><span class="label">kamarų:</span> <span data-field="chambers"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_storage">
+                        <ul class="content-items">
+                            <li><span class="label">priemenių:</span> <span data-field="hallways"></span></li>
+                            <li><span class="label">rūsių:</span> <span data-field="basements"></span></li>
+                            <li><span class="label">sandėlių:</span> <span data-field="warehouses"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_food">
+                        <ul class="content-items">
+                            <li><span class="label">virtuvių:</span> <span data-field="kitchens"></span></li>
+                            <li><span class="label">kepyklų:</span> <span data-field="bakeries"></span></li>
+                            <li><span class="label">bravorų:</span> <span data-field="breweries"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_commerce">
+                        <ul class="content-items">
+                            <li><span class="label">krautuvių:</span> <span data-field="stores"></span></li>
+                            <li><span class="label">smuklių:</span> <span data-field="inns"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_stables">
+                        <ul class="content-items">
+                            <li><span class="label">vietų arklidėse:</span> <span data-field="stables"></span></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li data-theme="theme_profession">
+                        <ul class="content-items">
+                            <li><span class="label">profesija / luomas:</span> <span data-mod-field="occupant_professions"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_title">
+                        <ul class="content-items">
+                            <li><span class="label">pareigybė:</span> <span data-mod-field="occupant_title"></span></li>
+                        </ul>
+                    </li>
+                    <li data-theme="theme_guest">
+                        <ul class="content-items">
+                            <li><span class="label">svečias:</span> <span data-mod-field="guest"></span></li>
+                        </ul>
+                    </li>
+                    <hr>
+                </ul>
+                <h5>Surašymo tekstas</h5>
+                <p><span data-field="source_lt"></span></p>
+            </div>
+        </section>
+    </body>
+</html>
